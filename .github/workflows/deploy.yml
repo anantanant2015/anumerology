@@ -1,0 +1,48 @@
+name: CI/CD Pipeline to GitHub Pages
+
+# 1. THE TRIGGER: When does this pipeline run?
+on:
+  push:
+    branches: ["main"] # Runs every time you push to the 'main' branch
+
+# 2. PERMISSIONS: Allow the pipeline to publish to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 3. THE JOBS: What exactly should the pipeline do?
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # Runs on a temporary Linux server
+
+    steps:
+      # --- CONTINUOUS INTEGRATION (CI) ---
+
+      - name: Checkout Code
+        uses: actions/checkout@v4 # Downloads your code to the server
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4 # Installs Node.js
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install # Installs Vue and other packages
+
+      - name: Build the App
+        run: npm run build # Compiles your code into the 'dist' folder
+
+      # --- CONTINUOUS DEPLOYMENT (CD) ---
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Built Files
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist' # Grabs the compiled folder we just built
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Pushes it live to the internet!
