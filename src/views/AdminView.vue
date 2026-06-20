@@ -34,20 +34,21 @@
 
     <div class="admin-panel" v-else>
       <aside class="side-nav">
-        <button
+        <router-link
           class="nav-item"
           :class="{ active: currentView === 'manage' }"
-          @click="currentView = 'manage'"
+          :to="{ path: '/admin', query: { view: 'manage' } }"
         >
           Manage Users
-        </button>
-        <button
+        </router-link>
+
+        <router-link
           class="nav-item"
           :class="{ active: currentView === 'settings' }"
-          @click="currentView = 'settings'"
+          :to="{ path: '/admin', query: { view: 'settings' } }"
         >
           Settings
-        </button>
+        </router-link>
       </aside>
 
       <section class="admin-content">
@@ -102,7 +103,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watchEffect, onMounted, onBeforeUnmount } from 'vue';
+import { ref, computed, watchEffect, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useAuth0 } from '@auth0/auth0-vue';
 import {
   getAllUsers,
@@ -113,12 +114,17 @@ import {
   isAdminUser,
 } from '../utils/userStore';
 import ActionMenu from '../components/ActionMenu.vue';
+import { useRoute } from 'vue-router';
 
-
+const route = useRoute();
 
 const { isLoading, isAuthenticated, loginWithRedirect, user } = useAuth0();
 const users = ref(getAllUsers());
-const currentView = ref('manage');
+const currentView = ref(route.query.view ? String(route.query.view) : 'manage');
+
+watch(() => route.query.view, (val) => {
+  currentView.value = val ? String(val) : 'manage';
+});
 const adminPassword = ref('');
 const errorMessage = ref('');
 const adminValidated = ref(false);
