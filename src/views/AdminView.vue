@@ -73,11 +73,15 @@
                 <td>{{ item.isApproved }}</td>
                 <td>{{ item.isAdmin }}</td>
                 <td>{{ item.blocked }}</td>
-                <td>
-                    <button class="admin-action" @click="toggleApprove(item.email)">Toggle Approve</button>
-                    <button class="admin-action" @click="toggleAdmin(item.email)">Toggle Admin</button>
-                    <button class="admin-action" @click="toggleBlock(item.email)">Toggle Block</button>
-                    <button class="admin-action" @click="deleteUser(item.email)">Remove</button>
+                <td class="actions-cell" style="position:relative;">
+                  <button class="menu-toggle" @click.stop="toggleMenu(item.email)">⋮</button>
+
+                  <div v-if="openMenu === item.email" class="action-menu" @click.stop>
+                    <button class="action-item" @click="handleApprove(item.email)">Toggle Approve</button>
+                    <button class="action-item" @click="handleAdmin(item.email)">Toggle Admin</button>
+                    <button class="action-item" @click="handleBlock(item.email)">Toggle Block</button>
+                    <button class="action-item danger" @click="handleRemove(item.email)">Remove</button>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -112,6 +116,8 @@ import {
   isAdminUser,
 } from '../utils/userStore';
 
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
 const { isLoading, isAuthenticated, loginWithRedirect, user } = useAuth0();
 const users = ref(getAllUsers());
 const currentView = ref('manage');
@@ -119,6 +125,36 @@ const adminPassword = ref('');
 const errorMessage = ref('');
 const adminValidated = ref(false);
 const newEmail = ref('');
+const openMenu = ref(null);
+
+const toggleMenu = (email) => {
+  openMenu.value = openMenu.value === email ? null : email;
+};
+
+const handleApprove = (email) => {
+  toggleApprove(email);
+  openMenu.value = null;
+};
+
+const handleAdmin = (email) => {
+  toggleAdmin(email);
+  openMenu.value = null;
+};
+
+const handleBlock = (email) => {
+  toggleBlock(email);
+  openMenu.value = null;
+};
+
+const handleRemove = (email) => {
+  deleteUser(email);
+  openMenu.value = null;
+};
+
+const onDocClick = () => { openMenu.value = null; };
+
+onMounted(() => document.addEventListener('click', onDocClick));
+onBeforeUnmount(() => document.removeEventListener('click', onDocClick));
 
 const currentUser = computed(() => findUserByEmail(user.value?.email));
 const isBlocked = computed(() => currentUser.value?.blocked === true);
@@ -310,6 +346,40 @@ td {
 }
 
 .btn { min-width: 120px; background: var(--primary); color: #fff; }
+
+.menu-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  border: 1px solid var(--muted-border);
+  background: var(--surface);
+  cursor: pointer;
+}
+
+.action-menu {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  background: var(--surface);
+  border: 1px solid var(--muted-border);
+  border-radius: 8px;
+  box-shadow: var(--elevation-1);
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  z-index: 30;
+}
+
+.action-item {
+  padding: 8px 12px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.action-item.danger { color: var(--danger); }
 
 .error-message { margin-top: 12px; color: var(--danger); }
 </style>
