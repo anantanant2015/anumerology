@@ -65,7 +65,7 @@ const logoutApp = () => logout({ logoutParams: { returnTo: window.location.origi
 body {
   margin: 0;
   padding: 0;
-  background-color: #f4f7f6;
+  background-color: var(--bg);
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -96,6 +96,7 @@ body {
   --danger: #d32f2f;
   --accent-2: #ab47bc;
   --compound-color: #c51162;
+  --muted-hover: #bdbdbd;
 }
 
 /* shared Material-like primitives */
@@ -125,7 +126,7 @@ body {
 
 .btn-secondary {
   background-color: var(--muted);
-  color: #333;
+  color: var(--text);
 }
 
 .topbar {
@@ -135,15 +136,15 @@ body {
   width: 100%;
   margin: 0 0 18px;
   padding: 16px 24px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  background: var(--surface);
+  border-radius: var(--control-radius);
+  box-shadow: var(--elevation-1);
 }
 
 .brand {
   font-weight: 700;
   font-size: 1.1rem;
-  color: #2c3e50;
+  color: var(--text);
 }
 
 .controls {
@@ -153,7 +154,7 @@ body {
 }
 
 .user-label {
-  color: #444;
+  color: var(--text);
   font-size: 0.95rem;
 }
 
@@ -166,25 +167,7 @@ body {
   padding-bottom: 40px;
 }
 
-.btn {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.btn-primary {
-  background-color: #03a9f4;
-  color: white;
-}
-
-.btn-secondary {
-  background-color: #e0e0e0;
-  color: #333;
-}
+  /* reused shared button tokens above */
 
   .user-meta {
     display: flex;
@@ -197,8 +180,8 @@ body {
     display: inline-block;
     padding: 4px 10px;
     border-radius: 999px;
-    background: #f0f4ff;
-    color: #1e3a8a;
+    background: var(--soft-bg);
+    color: var(--primary-700);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;

@@ -200,15 +200,15 @@ const clear = () => {
 .calc-side-nav h3 {
   margin: 0;
   font-size: 1rem;
-  color: #2c3e50;
+  color: var(--text);
 }
 
 .calc-side-nav button {
   padding: 10px 14px;
-  border-radius: 10px;
+  border-radius: var(--control-radius);
   border: none;
-  background: #f4f7ff;
-  color: #1e3a8a;
+  background: var(--soft-bg);
+  color: var(--primary-700);
   text-align: left;
   cursor: pointer;
 }
@@ -302,15 +302,15 @@ const clear = () => {
 .calc-side-nav h3 {
   margin: 0;
   font-size: 1rem;
-  color: #2c3e50;
+  color: var(--text);
 }
 
 .btn:active { transform: translateY(1px); }
 
 .btn-primary { background-color: var(--primary); color: white; }
 .btn-primary:hover { background-color: var(--primary-700); }
-.btn-secondary { background-color: var(--muted); color: #333; }
-.btn-secondary:hover { background-color: #bdbdbd; }
+.btn-secondary { background-color: var(--muted); color: var(--text); }
+.btn-secondary:hover { background-color: var(--muted-hover); }
 
 .error { color: var(--danger); font-size: 0.9rem; margin-top: 12px; }
 
