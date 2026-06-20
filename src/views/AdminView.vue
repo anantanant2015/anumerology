@@ -74,10 +74,10 @@
                 <td>{{ item.isAdmin }}</td>
                 <td>{{ item.blocked }}</td>
                 <td>
-                  <button @click="toggleApprove(item.email)">Toggle Approve</button>
-                  <button @click="toggleAdmin(item.email)">Toggle Admin</button>
-                  <button @click="toggleBlock(item.email)">Toggle Block</button>
-                  <button @click="deleteUser(item.email)">Remove</button>
+                    <button class="admin-action" @click="toggleApprove(item.email)">Toggle Approve</button>
+                    <button class="admin-action" @click="toggleAdmin(item.email)">Toggle Admin</button>
+                    <button class="admin-action" @click="toggleBlock(item.email)">Toggle Block</button>
+                    <button class="admin-action" @click="deleteUser(item.email)">Remove</button>
                 </td>
               </tr>
             </tbody>
@@ -203,8 +203,8 @@ const addNewUser = () => {
 <style scoped>
 .admin-page {
   width: 100%;
-  max-width: 740px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   padding: 24px 0;
 }
 
@@ -233,6 +233,7 @@ const addNewUser = () => {
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 24px;
   width: 100%;
+  max-width: 740px;
 }
 
 .side-nav {
@@ -289,16 +290,23 @@ table {
 th,
 td {
   border-bottom: 1px solid var(--muted-divider);
-  padding: 12px 10px;
+  padding: 18px 14px;
+  vertical-align: middle;
 }
 
 .admin-action {
-  margin-right: 8px;
-  padding: 8px 10px;
-  border: none;
+  display: block;
+  width: 100px;
+  margin: 6px 0;
+  padding: 6px 8px;
+  border: 1px solid var(--muted-border);
   border-radius: var(--small-radius);
   cursor: pointer;
-  background: var(--muted);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.85rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
 }
 
 .btn { min-width: 120px; background: var(--primary); color: #fff; }
