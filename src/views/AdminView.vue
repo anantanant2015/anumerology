@@ -74,14 +74,11 @@
                 <td>{{ item.isAdmin }}</td>
                 <td>{{ item.blocked }}</td>
                 <td class="actions-cell">
-                  <button class="menu-toggle" @click.stop="toggleMenu(item.email)">⋮</button>
-
-                  <div v-if="openMenu === item.email" class="action-menu" @click.stop>
-                    <button class="action-item" @click="handleApprove(item.email)">Toggle Approve</button>
-                    <button class="action-item" @click="handleAdmin(item.email)">Toggle Admin</button>
-                    <button class="action-item" @click="handleBlock(item.email)">Toggle Block</button>
-                    <button class="action-item danger" @click="handleRemove(item.email)">Remove</button>
-                  </div>
+                  <ActionMenu :open="openMenu === item.email" :items="getMenuItems(item.email)" @close="openMenu = null">
+                    <template #toggle>
+                      <button class="menu-toggle" @click.stop="toggleMenu(item.email)">⋮</button>
+                    </template>
+                  </ActionMenu>
                 </td>
               </tr>
             </tbody>
@@ -115,6 +112,7 @@ import {
   addUser,
   isAdminUser,
 } from '../utils/userStore';
+import ActionMenu from '../components/ActionMenu.vue';
 
 
 
@@ -150,6 +148,13 @@ const handleRemove = (email) => {
   deleteUser(email);
   openMenu.value = null;
 };
+
+const getMenuItems = (email) => [
+  { label: 'Toggle Approve', onClick: () => { toggleApprove(email); } },
+  { label: 'Toggle Admin', onClick: () => { toggleAdmin(email); } },
+  { label: 'Toggle Block', onClick: () => { toggleBlock(email); } },
+  { label: 'Remove', onClick: () => { deleteUser(email); }, danger: true },
+];
 
 const onDocClick = () => { openMenu.value = null; };
 
@@ -362,30 +367,14 @@ td {
   cursor: pointer;
 }
 
-.action-menu {
-  position: absolute;
-  right: 0;
-  top: 40px;
-  background: var(--surface);
+.menu-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
   border: 1px solid var(--muted-border);
-  border-radius: 8px;
-  box-shadow: var(--elevation-1);
-  display: flex;
-  flex-direction: column;
-  padding: 6px;
-  z-index: 30;
-}
-
-.action-item {
-  padding: 8px 12px;
-  background: transparent;
-  border: none;
-  text-align: left;
+  background: var(--surface);
   cursor: pointer;
-  color: var(--text);
 }
-
-.action-item.danger { color: var(--danger); }
 
 .error-message { margin-top: 12px; color: var(--danger); }
 </style>
