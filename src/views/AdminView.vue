@@ -105,7 +105,7 @@
 </template>
 
 <script setup>
-import { ref, computed, watchEffect } from 'vue';
+import { ref, computed, watchEffect, onMounted, onBeforeUnmount } from 'vue';
 import { useAuth0 } from '@auth0/auth0-vue';
 import {
   getAllUsers,
@@ -116,7 +116,7 @@ import {
   isAdminUser,
 } from '../utils/userStore';
 
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+
 
 const { isLoading, isAuthenticated, loginWithRedirect, user } = useAuth0();
 const users = ref(getAllUsers());
