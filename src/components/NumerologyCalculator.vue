@@ -2,9 +2,32 @@
   <div class="calculator-shell">
     <aside class="calc-side-nav">
       <h3>Jump to</h3>
-      <button type="button" @click="scrollTo('compound')">Compound Number</button>
-      <button type="button" @click="scrollTo('hebrew')">Hebrew</button>
-      <button type="button" @click="scrollTo('age')">Age</button>
+      <a
+        class="nav-item"
+        href="#compound"
+        :aria-current="activeSection === 'compound' ? 'true' : null"
+        @click.prevent="scrollTo('compound')"
+      >
+        Compound Number
+      </a>
+
+      <a
+        class="nav-item"
+        href="#hebrew"
+        :aria-current="activeSection === 'hebrew' ? 'true' : null"
+        @click.prevent="scrollTo('hebrew')"
+      >
+        Hebrew
+      </a>
+
+      <a
+        class="nav-item"
+        href="#age"
+        :aria-current="activeSection === 'age' ? 'true' : null"
+        @click.prevent="scrollTo('age')"
+      >
+        Age
+      </a>
     </aside>
 
     <div class="numerology-container">
@@ -70,7 +93,10 @@
 <script setup>
 import { ref, computed } from 'vue';
 
+const activeSection = ref('compound');
+
 const scrollTo = (section) => {
+  activeSection.value = section;
   const target = document.getElementById(section);
   if (target) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -203,26 +229,33 @@ const clear = () => {
   color: var(--text);
 }
 
-.calc-side-nav button {
+.calc-side-nav .nav-item {
+  display: block;
   padding: 10px 14px;
   border-radius: var(--control-radius);
   border: none;
+  text-decoration: none;
   background: var(--soft-bg);
   color: var(--primary-700);
   text-align: left;
   cursor: pointer;
 }
 
-.calc-side-nav button:hover,
-.calc-side-nav button:focus {
+.calc-side-nav .nav-item:hover,
+.calc-side-nav .nav-item:focus {
   background: var(--primary-700);
   color: white;
   transform: translateY(-1px);
 }
 
-.calc-side-nav button:focus-visible {
+.calc-side-nav .nav-item:focus-visible {
   outline: 3px solid rgba(3,169,244,0.18);
   outline-offset: 3px;
+}
+
+.calc-side-nav .nav-item[aria-current="true"] {
+  background: var(--primary);
+  color: white;
 }
 
 .numerology-container {
