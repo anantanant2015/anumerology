@@ -1,8 +1,9 @@
 <template>
   <div class="app-shell">
     <header class="topbar">
-      <div class="brand">Astro Numerology</div>
-      <div class="controls">
+      <div class="inner">
+        <div class="brand">Astro Numerology</div>
+        <div class="controls">
         <div v-if="isAuthenticated && user" class="user-meta">
           <span class="user-label">{{ user.name || user.email }}</span>
           <span class="role-badge">{{ userLabel }}</span>
@@ -28,10 +29,14 @@
           Logout
         </button>
       </div>
+        </div>
+      </div>
     </header>
 
     <main class="app-container">
-      <router-view />
+      <div class="inner">
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
@@ -70,10 +75,15 @@ body {
 }
 
 .app-shell {
+  width: 100%;
+  margin: 0;
+  padding: 24px 18px 0;
+}
+
+.inner {
   width: 80%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 24px 18px 0;
 }
 
 :root {
