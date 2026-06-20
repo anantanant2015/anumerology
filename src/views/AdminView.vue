@@ -313,6 +313,18 @@ const addNewUser = () => {
   color: white;
 }
 
+.nav-item:hover,
+.nav-item:focus {
+  background: var(--primary-700);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.nav-item:focus-visible {
+  outline: 3px solid rgba(3,169,244,0.18);
+  outline-offset: 3px;
+}
+
 .admin-content {
   width: 100%;
   background: var(--surface);
