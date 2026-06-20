@@ -43,10 +43,10 @@ const submitPassword = () => {
 .admin-prompt {
   width: 100%;
   max-width: 520px;
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  background: var(--surface);
+  padding: var(--card-padding);
+  border-radius: var(--card-radius);
+  box-shadow: var(--elevation-2);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -55,8 +55,8 @@ const submitPassword = () => {
 input {
   width: 100%;
   padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
+  border-radius: var(--small-radius);
+  border: 1px solid var(--muted-border);
 }
 
 .btn {
@@ -64,6 +64,6 @@ input {
 }
 
 .error-message {
-  color: #d32f2f;
+  color: var(--danger);
 }
 </style>

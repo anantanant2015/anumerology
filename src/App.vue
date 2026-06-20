@@ -76,6 +76,58 @@ body {
   padding: 24px 18px 0;
 }
 
+:root {
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --primary: #03a9f4;
+  --primary-700: #0288d1;
+  --accent: #6200ea;
+  --muted: #e0e0e0;
+  --text: #2c3e50;
+  --card-radius: 8px;
+  --card-padding: 24px;
+  --elevation-1: 0 4px 6px rgba(0,0,0,0.10);
+  --elevation-2: 0 8px 22px rgba(0,0,0,0.08);
+  --control-radius: 10px;
+  --small-radius: 4px;
+  --soft-bg: #f4f7ff;
+  --muted-border: #dcdcdc;
+  --muted-divider: #eaeaea;
+  --danger: #d32f2f;
+  --accent-2: #ab47bc;
+  --compound-color: #c51162;
+}
+
+/* shared Material-like primitives */
+.card {
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
+  box-shadow: var(--elevation-1);
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.btn-primary:hover { background-color: var(--primary-700); }
+
+.btn-secondary {
+  background-color: var(--muted);
+  color: #333;
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;

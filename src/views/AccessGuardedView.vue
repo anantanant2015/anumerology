@@ -50,10 +50,10 @@ const accessAllowed = computed(() => {
 .page-card {
   width: 100%;
   max-width: 740px;
-  background: #ffffff;
+  background: var(--surface);
   padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border-radius: var(--card-radius);
+  box-shadow: var(--elevation-2);
 }
 
 .calculator-page {
@@ -84,8 +84,8 @@ const accessAllowed = computed(() => {
 .btn {
   padding: 12px 20px;
   border: none;
-  border-radius: 10px;
-  background: #03a9f4;
+  border-radius: var(--control-radius);
+  background: var(--primary);
   color: #fff;
   cursor: pointer;
 }

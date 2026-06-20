@@ -185,10 +185,10 @@ const clear = () => {
 
 .calc-side-nav {
   min-width: 220px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  background: var(--surface);
+  border-radius: calc(var(--card-radius) * 2);
+  padding: var(--card-padding);
+  box-shadow: var(--elevation-2);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -220,25 +220,25 @@ const clear = () => {
 }
 
 .card {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 24px;
+  background: var(--surface);
+  border-radius: var(--card-radius);
+  padding: var(--card-padding);
   margin-bottom: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--elevation-1);
   transition: box-shadow 0.3s ease;
 }
 
 .title {
   margin-top: 0;
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: var(--text);
 }
 
 .subtitle {
   margin-top: 0;
   font-size: 1.2rem;
-  color: #6200ea;
-  border-bottom: 2px solid #f0f0f0;
+  color: var(--accent);
+  border-bottom: 2px solid var(--muted-divider);
   padding-bottom: 8px;
 }
 
@@ -251,16 +251,16 @@ const clear = () => {
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid var(--muted-border);
+  border-radius: var(--small-radius);
   outline: none;
   transition: border-color 0.2s;
   box-sizing: border-box;
 }
 
 .material-input:focus {
-  border-color: #6200ea;
-  box-shadow: 0 0 0 2px rgba(98, 0, 234, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(98, 0, 234, 0.08);
 }
 
 .button-group {
@@ -278,10 +278,10 @@ const clear = () => {
 .calc-side-nav {
   min-width: 220px;
   max-width: 240px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  background: var(--surface);
+  border-radius: calc(var(--card-radius) * 2);
+  padding: var(--card-padding);
+  box-shadow: var(--elevation-2);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -291,10 +291,10 @@ const clear = () => {
 
 .calc-side-nav button {
   padding: 10px 14px;
-  border-radius: 10px;
+  border-radius: var(--control-radius);
   border: none;
-  background: #f4f7ff;
-  color: #1e3a8a;
+  background: var(--soft-bg);
+  color: var(--text);
   text-align: left;
   cursor: pointer;
 }
@@ -305,41 +305,17 @@ const clear = () => {
   color: #2c3e50;
 }
 
-.btn:active {
-  transform: translateY(1px);
-}
+.btn:active { transform: translateY(1px); }
 
-.btn-primary {
-  background-color: #03a9f4; /* Matches original button color */
-  color: white;
-  box-shadow: 0 2px 4px rgba(3, 169, 244, 0.3);
-}
+.btn-primary { background-color: var(--primary); color: white; }
+.btn-primary:hover { background-color: var(--primary-700); }
+.btn-secondary { background-color: var(--muted); color: #333; }
+.btn-secondary:hover { background-color: #bdbdbd; }
 
-.btn-primary:hover {
-  background-color: #0288d1;
-}
-
-.btn-secondary {
-  background-color: #e0e0e0;
-  color: #333;
-}
-
-.btn-secondary:hover {
-  background-color: #bdbdbd;
-}
-
-.error {
-  color: #d32f2f;
-  font-size: 0.9rem;
-  margin-top: 12px;
-}
+.error { color: var(--danger); font-size: 0.9rem; margin-top: 12px; }
 
 /* Results Display */
-.compound-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #c51162;
-}
+.compound-value { font-size: 2rem; font-weight: bold; color: var(--compound-color); }
 
 /* Grid & Cell Styling */
 .pyramid-container {
@@ -359,10 +335,10 @@ const clear = () => {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background-color: #ab47bc; /* Purple from the reference image */
+  background-color: var(--accent-2);
   color: white;
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: var(--small-radius);
   text-transform: uppercase;
 }
 

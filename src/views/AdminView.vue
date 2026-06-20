@@ -212,10 +212,10 @@ const addNewUser = () => {
   width: 100%;
   max-width: 740px;
   margin: 32px auto;
-  background: #ffffff;
+  background: var(--surface);
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  border-radius: var(--card-radius);
+  box-shadow: var(--elevation-2);
   text-align: center;
 }
 
@@ -224,8 +224,8 @@ const addNewUser = () => {
   max-width: 360px;
   margin: 16px auto;
   padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
+  border-radius: var(--small-radius);
+  border: 1px solid var(--muted-border);
 }
 
 .admin-panel {
@@ -247,24 +247,24 @@ const addNewUser = () => {
   padding: 14px 18px;
   border: none;
   text-align: left;
-  background: #ffffff;
-  border-radius: 10px;
+  background: var(--surface);
+  border-radius: var(--control-radius);
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--elevation-1);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav-item.active {
-  background: #03a9f4;
+  background: var(--primary);
   color: white;
 }
 
 .admin-content {
   width: 100%;
-  background: #ffffff;
+  background: var(--surface);
   padding: 24px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: var(--card-radius);
+  box-shadow: var(--elevation-1);
   min-width: 0;
 }
 
@@ -277,8 +277,8 @@ const addNewUser = () => {
 .add-user-row input {
   flex: 1;
   padding: 12px 14px;
-  border-radius: 10px;
-  border: 1px solid #dcdcdc;
+  border-radius: var(--small-radius);
+  border: 1px solid var(--muted-border);
 }
 
 table {
@@ -288,27 +288,20 @@ table {
 
 th,
 td {
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--muted-divider);
   padding: 12px 10px;
 }
 
-button {
+.admin-action {
   margin-right: 8px;
   padding: 8px 10px;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--small-radius);
   cursor: pointer;
-  background: #f3f3f3;
+  background: var(--muted);
 }
 
-.btn {
-  min-width: 120px;
-  background: #03a9f4;
-  color: #fff;
-}
+.btn { min-width: 120px; background: var(--primary); color: #fff; }
 
-.error-message {
-  margin-top: 12px;
-  color: #d32f2f;
-}
+.error-message { margin-top: 12px; color: var(--danger); }
 </style>
