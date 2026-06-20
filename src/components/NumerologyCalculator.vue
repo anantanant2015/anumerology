@@ -213,6 +213,18 @@ const clear = () => {
   cursor: pointer;
 }
 
+.calc-side-nav button:hover,
+.calc-side-nav button:focus {
+  background: var(--primary-700);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.calc-side-nav button:focus-visible {
+  outline: 3px solid rgba(3,169,244,0.18);
+  outline-offset: 3px;
+}
+
 .numerology-container {
   flex: 1;
   width: 100%;
