@@ -7,6 +7,7 @@
           <div v-if="isAuthenticated && user" class="user-meta">
             <span class="user-label">{{ user.name || user.email }}</span>
             <span
+              v-if="currentUser && currentUser.isAdmin"
               class="role-badge"
               role="button"
               tabindex="0"

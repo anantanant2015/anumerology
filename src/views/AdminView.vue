@@ -274,7 +274,7 @@ const addNewUser = () => {
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 24px;
   width: 100%;
-  max-width: 740px;
+  max-width: 100%;
 }
 
 .side-nav {
@@ -282,7 +282,13 @@ const addNewUser = () => {
   top: 120px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 14px;
+  min-width: 220px;
+  max-width: 240px;
+  background: var(--surface);
+  border-radius: calc(var(--card-radius) * 2);
+  padding: var(--card-padding);
+  box-shadow: var(--elevation-2);
 }
 
 .nav-item {
