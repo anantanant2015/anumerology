@@ -1,7 +1,7 @@
 <template>
   <div class="app-shell">
     <header class="topbar">
-      <div class="inner">
+      <CenteredContainer>
         <div class="brand">Astro Numerology</div>
         <div class="controls">
           <div v-if="isAuthenticated && user" class="user-meta">
@@ -29,13 +29,13 @@
             Logout
           </button>
         </div>
-      </div>
+      </CenteredContainer>
     </header>
 
     <main class="app-container">
-      <div class="inner">
+      <CenteredContainer>
         <router-view />
-      </div>
+      </CenteredContainer>
     </main>
   </div>
 </template>
@@ -44,6 +44,7 @@
 import { computed } from 'vue';
 import { useAuth0 } from '@auth0/auth0-vue';
 import { findUserByEmail } from './utils/userStore';
+import CenteredContainer from './components/CenteredContainer.vue';
 
 const {
   isLoading,

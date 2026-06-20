@@ -73,7 +73,7 @@
                 <td>{{ item.isApproved }}</td>
                 <td>{{ item.isAdmin }}</td>
                 <td>{{ item.blocked }}</td>
-                <td class="actions-cell" style="position:relative;">
+                <td class="actions-cell">
                   <button class="menu-toggle" @click.stop="toggleMenu(item.email)">⋮</button>
 
                   <div v-if="openMenu === item.email" class="action-menu" @click.stop>
@@ -328,6 +328,12 @@ td {
   border-bottom: 1px solid var(--muted-divider);
   padding: 18px 14px;
   vertical-align: middle;
+}
+
+.actions-cell {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .admin-action {
