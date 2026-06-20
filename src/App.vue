@@ -23,15 +23,7 @@
           </button>
 
           <button
-            v-else-if="!isAuthenticated"
-            @click="login"
-            class="btn btn-primary"
-          >
-            Login
-          </button>
-
-          <button
-            v-else
+            v-if="isAuthenticated"
             @click="logoutApp"
             class="btn btn-secondary"
           >
