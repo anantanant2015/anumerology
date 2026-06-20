@@ -4,31 +4,30 @@
       <div class="inner">
         <div class="brand">Astro Numerology</div>
         <div class="controls">
-        <div v-if="isAuthenticated && user" class="user-meta">
-          <span class="user-label">{{ user.name || user.email }}</span>
-          <span class="role-badge">{{ userLabel }}</span>
-        </div>
+          <div v-if="isAuthenticated && user" class="user-meta">
+            <span class="user-label">{{ user.name || user.email }}</span>
+            <span class="role-badge">{{ userLabel }}</span>
+          </div>
 
-        <button v-if="isLoading" class="btn btn-primary" disabled>
-          Loading...
-        </button>
+          <button v-if="isLoading" class="btn btn-primary" disabled>
+            Loading...
+          </button>
 
-        <button
-          v-else-if="!isAuthenticated"
-          @click="login"
-          class="btn btn-primary"
-        >
-          Login
-        </button>
+          <button
+            v-else-if="!isAuthenticated"
+            @click="login"
+            class="btn btn-primary"
+          >
+            Login
+          </button>
 
-        <button
-          v-else
-          @click="logoutApp"
-          class="btn btn-secondary"
-        >
-          Logout
-        </button>
-      </div>
+          <button
+            v-else
+            @click="logoutApp"
+            class="btn btn-secondary"
+          >
+            Logout
+          </button>
         </div>
       </div>
     </header>
