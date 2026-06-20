@@ -6,7 +6,15 @@
         <div class="controls">
           <div v-if="isAuthenticated && user" class="user-meta">
             <span class="user-label">{{ user.name || user.email }}</span>
-            <span class="role-badge">{{ userLabel }}</span>
+            <span
+              class="role-badge"
+              role="button"
+              tabindex="0"
+              @click="goAdmin"
+              @keyup.enter="goAdmin"
+            >
+              {{ userLabel }}
+            </span>
           </div>
 
           <button v-if="isLoading" class="btn btn-primary" disabled>
@@ -45,6 +53,7 @@ import { computed } from 'vue';
 import { useAuth0 } from '@auth0/auth0-vue';
 import { findUserByEmail } from './utils/userStore';
 import CenteredContainer from './components/CenteredContainer.vue';
+import { useRouter } from 'vue-router';
 
 const {
   isLoading,
@@ -64,6 +73,8 @@ const userLabel = computed(() => {
 
 const login = () => loginWithRedirect();
 const logoutApp = () => logout({ logoutParams: { returnTo: window.location.origin } });
+const router = useRouter();
+const goAdmin = () => router.push('/admin');
 </script>
 
 <style>
@@ -196,5 +207,6 @@ body {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    cursor: pointer;
   }
 </style>
