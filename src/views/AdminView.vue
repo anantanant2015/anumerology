@@ -213,9 +213,9 @@ const addNewUser = () => {
   max-width: 740px;
   margin: 32px auto;
   background: #ffffff;
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -231,7 +231,7 @@ const addNewUser = () => {
 .admin-panel {
   display: grid;
   grid-template-columns: 220px minmax(0, 1fr);
-  gap: 20px;
+  gap: 24px;
   width: 100%;
 }
 
@@ -263,8 +263,8 @@ const addNewUser = () => {
   width: 100%;
   background: #ffffff;
   padding: 24px;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   min-width: 0;
 }
 

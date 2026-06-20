@@ -10,49 +10,59 @@
     <div class="numerology-container">
       <div class="card input-section">
         <h2 class="title">Astro Numerology Calculator</h2>
-      <div class="input-group">
-        <input
-          v-model="nameInput"
-          @keyup.enter="calculate"
-          type="text"
-          placeholder="Enter a word or name (e.g., windows)"
-          class="material-input"
-        />
-      </div>
-      <div class="button-group">
-        <button @click="calculate" class="btn btn-primary">Calculate</button>
-        <button @click="clear" class="btn btn-secondary">Clear</button>
-      </div>
-      <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
-    </div>
 
-    <div v-if="hasResults" class="results-section">
+        <div class="input-group">
+          <input
+            v-model="nameInput"
+            @keyup.enter="calculate"
+            type="text"
+            placeholder="Enter a word or name (e.g., windows)"
+            class="material-input"
+          />
+        </div>
 
-      <div class="card compound-card">
-        <h3 class="subtitle">Compound Number</h3>
-        <div class="compound-value">{{ compoundNumber }}</div>
+        <div class="button-group">
+          <button @click="calculate" class="btn btn-primary">Calculate</button>
+          <button @click="clear" class="btn btn-secondary">Clear</button>
+        </div>
+
+        <p v-if="errorMessage" class="error">{{ errorMessage }}</p>
       </div>
 
-      <div class="card pyramid-card">
-        <h3 class="subtitle">Hebrew</h3>
-        <div class="pyramid-container">
-          <div v-for="(row, rowIndex) in hebrewPyramid" :key="'row-'+rowIndex" class="pyramid-row">
-            <span v-for="(cell, cellIndex) in row" :key="'cell-'+cellIndex" class="pyramid-cell">
-              {{ cell }}
+      <div v-if="hasResults" class="results-section">
+        <div class="card compound-card" id="compound">
+          <h3 class="subtitle">Compound Number</h3>
+          <div class="compound-value">{{ compoundNumber }}</div>
+        </div>
+
+        <div class="card pyramid-card" id="hebrew">
+          <h3 class="subtitle">Hebrew</h3>
+          <div class="pyramid-container">
+            <div
+              v-for="(row, rowIndex) in hebrewPyramid"
+              :key="`row-${rowIndex}`"
+              class="pyramid-row"
+            >
+              <span
+                v-for="(cell, cellIndex) in row"
+                :key="`cell-${cellIndex}`"
+                class="pyramid-cell"
+              >
+                {{ cell }}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div id="age" class="card age-card">
+          <h3 class="subtitle">Age</h3>
+          <div class="age-container">
+            <span v-for="(age, index) in ageProgression" :key="`age-${index}`" class="age-cell">
+              {{ age }}
             </span>
           </div>
         </div>
       </div>
-
-      <div id="age" class="card age-card">
-        <h3 class="subtitle">Age</h3>
-        <div class="age-container">
-          <span v-for="(age, index) in ageProgression" :key="'age-'+index" class="age-cell">
-            {{ age }}
-          </span>
-        </div>
-      </div>
-
     </div>
   </div>
 </template>
