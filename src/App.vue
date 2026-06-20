@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="app-shell">
     <header class="topbar">
       <div class="brand">Astro Numerology</div>
       <div class="controls">
@@ -69,13 +69,19 @@ body {
   font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.app-shell {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 18px 0;
+}
+
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto 18px;
+  margin: 0 0 18px;
   padding: 16px 24px;
   background: #ffffff;
   border-radius: 10px;
@@ -100,11 +106,12 @@ body {
 }
 
 .app-container {
-  min-height: 100vh;
+  width: 100%;
+  min-height: calc(100vh - 140px);
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 5vh;
+  padding-bottom: 40px;
 }
 
 .btn {

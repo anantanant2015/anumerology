@@ -1,7 +1,15 @@
 <template>
-  <div class="numerology-container">
-    <div class="card input-section">
-      <h2 class="title">Astro Numerology Calculator</h2>
+  <div class="calculator-shell">
+    <aside class="calc-side-nav">
+      <h3>Jump to</h3>
+      <button type="button" @click="scrollTo('compound')">Compound Number</button>
+      <button type="button" @click="scrollTo('hebrew')">Hebrew</button>
+      <button type="button" @click="scrollTo('age')">Age</button>
+    </aside>
+
+    <div class="numerology-container">
+      <div class="card input-section">
+        <h2 class="title">Astro Numerology Calculator</h2>
       <div class="input-group">
         <input
           v-model="nameInput"
@@ -36,7 +44,7 @@
         </div>
       </div>
 
-      <div class="card age-card">
+      <div id="age" class="card age-card">
         <h3 class="subtitle">Age</h3>
         <div class="age-container">
           <span v-for="(age, index) in ageProgression" :key="'age-'+index" class="age-cell">
@@ -51,6 +59,13 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+
+const scrollTo = (section) => {
+  const target = document.getElementById(section);
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+};
 
 // --- State ---
 const nameInput = ref('');
@@ -151,12 +166,47 @@ const clear = () => {
 
 <style scoped>
 /* --- Material Design Modular Theme --- */
+.calculator-shell {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.calc-side-nav {
+  min-width: 220px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
+}
+
+.calc-side-nav h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+.calc-side-nav button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #f4f7ff;
+  color: #1e3a8a;
+  text-align: left;
+  cursor: pointer;
+}
+
 .numerology-container {
-  max-width: 600px;
-  margin: 0 auto;
-  font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
-  padding: 20px;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
 }
 
 .card {
@@ -208,15 +258,41 @@ const clear = () => {
   gap: 12px;
 }
 
-.btn {
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  text-transform: uppercase;
+.calculator-shell {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.calc-side-nav {
+  min-width: 220px;
+  max-width: 240px;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: sticky;
+  top: 120px;
+}
+
+.calc-side-nav button {
+  padding: 10px 14px;
+  border-radius: 10px;
   border: none;
-  border-radius: 4px;
+  background: #f4f7ff;
+  color: #1e3a8a;
+  text-align: left;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
+}
+
+.calc-side-nav h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #2c3e50;
 }
 
 .btn:active {

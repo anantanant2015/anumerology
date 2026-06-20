@@ -203,14 +203,14 @@ const addNewUser = () => {
 <style scoped>
 .admin-page {
   width: 100%;
-  max-width: 1100px;
+  max-width: 740px;
   margin: 0 auto;
-  padding: 24px;
+  padding: 24px 0;
 }
 
 .admin-guard {
   width: 100%;
-  max-width: 720px;
+  max-width: 740px;
   margin: 32px auto;
   background: #ffffff;
   padding: 28px;
@@ -229,12 +229,15 @@ const addNewUser = () => {
 }
 
 .admin-panel {
-  display: flex;
-  gap: 24px;
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 20px;
+  width: 100%;
 }
 
 .side-nav {
-  width: 220px;
+  position: sticky;
+  top: 120px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -248,6 +251,7 @@ const addNewUser = () => {
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .nav-item.active {
@@ -256,11 +260,12 @@ const addNewUser = () => {
 }
 
 .admin-content {
-  flex: 1;
+  width: 100%;
   background: #ffffff;
   padding: 24px;
   border-radius: 16px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  min-width: 0;
 }
 
 .add-user-row {

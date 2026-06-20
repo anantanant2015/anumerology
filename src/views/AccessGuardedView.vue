@@ -1,5 +1,5 @@
 <template>
-  <div class="guarded-view">
+  <div class="guarded-view centered-shell">
     <div v-if="isLoading" class="page-card">
       <h2>Checking access...</h2>
     </div>
@@ -54,6 +54,25 @@ const accessAllowed = computed(() => {
   padding: 28px;
   border-radius: 16px;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.calculator-page {
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.centered-shell {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 12px;
+}
+
+.guarded-view {
+  width: 100%;
 }
 
 .login-card,
